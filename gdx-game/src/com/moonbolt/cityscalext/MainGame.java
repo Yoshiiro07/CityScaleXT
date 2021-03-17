@@ -1,49 +1,53 @@
 package com.moonbolt.cityscalext;
 
 import com.badlogic.gdx.*;
-import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.*;
 
-public class MainGame implements ApplicationListener
-{
-	Texture texture;
-	SpriteBatch batch;
-
+public class MainGame extends Game {
+public MainGame(){};
+	
+	SpriteBatch batch;	
+	public ManagerScreen loadingmanager;
+	
 	@Override
 	public void create()
 	{
-		texture = new Texture(Gdx.files.internal("android.jpg"));
-		batch = new SpriteBatch();
+		batch = new SpriteBatch();  
+		loadingmanager = new ManagerScreen(this);
+		this.Switch("MainScreen");
+	}
+	
+	public void Switch(String screenName) {
+		loadingmanager.screenSwitch(screenName);
 	}
 
 	@Override
 	public void render()
-	{        
-	    Gdx.gl.glClearColor(1, 1, 1, 1);
-	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(texture, Gdx.graphics.getWidth() / 4, 0, 
-				   Gdx.graphics.getWidth() / 2, Gdx.graphics.getWidth() / 2);
-		batch.end();
+	{   
+	    super.render();
 	}
 
 	@Override
 	public void dispose()
 	{
+		super.dispose();
 	}
 
 	@Override
 	public void resize(int width, int height)
 	{
+		super.resize(width, height);
 	}
 
 	@Override
 	public void pause()
 	{
+		super.pause();
 	}
 
 	@Override
 	public void resume()
 	{
+		super.resume();
 	}
 }
